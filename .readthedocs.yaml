@@ -13,23 +13,11 @@ build:
     # nodejs: "19"
     # rust: "1.64"
     # golang: "1.19"
-  commands:
-    - git clone --no-single-branch --depth 50 https://github.com/lbayn3b/readthedocs .
-    - git checkout --force origin/main
-    - git clean -d -f -f
-    - cat .readthedocs.yaml
-    - asdf global python 3.9.17
-    - python -mvirtualenv $READTHEDOCS_VIRTUALENV_PATH
-    - python -m pip install --upgrade --no-cache-dir pip setuptools
-    - python -m pip install --upgrade --no-cache-dir pillow mock==1.0.1 alabaster>=0.7,<0.8,!=0.7.5 commonmark==0.9.1 recommonmark==0.5.0 sphinx sphinx-rtd-theme readthedocs-sphinx-ext<2.3
-    - python -m pip install --exists-action=w --no-cache-dir -r requirements.txt
-    - cat source/conf.py
-    - python -m sphinx -T -E -b html -d _build/doctrees -D language=en . $READTHEDOCS_OUTPUT/html
 
 
 # Build documentation in the "docs/" directory with Sphinx
-#sphinx:
-#  configuration: source/conf.py
+sphinx:
+  configuration: source/conf.py
 
 # Optionally build your docs in additional formats such as PDF and ePub
 # formats:
